@@ -3,7 +3,6 @@ const EmployeeModel = require('../models/employee.model');
 
 const create = async (req, res, next) => { 
     try {
-        // const savedEmployee = await EmployeeModel.create(req.body);
         const newEmployee = new EmployeeModel(req.body);
         const savedEmployee = await newEmployee.save();
         
@@ -18,6 +17,15 @@ const create = async (req, res, next) => {
     }
 }
 
+const list = async (req, res, next) => { 
+    try {
+        var employees = await EmployeeModel.find({});
+        res.status(200).json({ employees });
+    } catch (error) {
+        res.status(500).send("Error fetching employees!!");
+    }
+}
+
 const update = async (req, res, next) => { 
     
 }
@@ -27,10 +35,6 @@ const remove = async (req, res, next) => {
 }
 
 const findById = async (req, res, next) => { 
-    
-}
-
-const list = async (req, res, next) => { 
     
 }
 
