@@ -1,10 +1,11 @@
 require('dotenv').config();
 
 const express = require('express');
-const employeeRoutes = require('./routes/employee.routes');
 const allRoutes = require('./routes');
+const { connectDb } = require('./db/databaseConnection');
 
 const app = express();
+connectDb();
 
 app.use(express.json());
 

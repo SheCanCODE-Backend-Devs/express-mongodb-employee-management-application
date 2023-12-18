@@ -20,7 +20,7 @@ const EmployeeSchema = new mongoose.Schema({
         type: Date,
         default: new Date(), 
     },
-    updateTime: { required: true, type: Date },
+    updateTime: { required: false, type: Date },
 });
 
 module.exports = mongoose.model('employee', EmployeeSchema);
