@@ -3,8 +3,11 @@ const EmployeeModel = require('../models/employee.model');
 
 const create = async (req, res, next) => { 
     try {
-        console.log(req.body);
-        const savedEmployee = await EmployeeModel.create(req.body);
+        // const savedEmployee = await EmployeeModel.create(req.body);
+        const newEmployee = new EmployeeModel(req.body);
+        const savedEmployee = await newEmployee.save();
+        
+        console.log(savedEmployee);
 
         res.status(201).json({
             message: 'Employee created',
